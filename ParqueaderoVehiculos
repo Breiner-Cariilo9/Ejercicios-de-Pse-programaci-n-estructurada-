@@ -1,0 +1,62 @@
+Algoritmo ParqueaderoVehiculos
+    Definir numeroVehiculos Como Entero
+    Definir placa, horaIngreso, resumenVehiculos Como Caracter
+    Definir i Como Entero
+    
+    resumenVehiculos <- ""
+    
+    Escribir "=== SISTEMA DE REGISTRO DE PARQUEADERO ==="
+    Escribir ""
+    
+    Escribir "¿Cuántos vehículos ingresarán al parqueadero?"
+    Leer numeroVehiculos
+    
+    Si numeroVehiculos > 0 Entonces
+        Escribir ""
+        Escribir "--- REGISTRO DE VEHÍCULOS ---"
+        
+        Para i <- 1 Hasta numeroVehiculos Con Paso 1 Hacer
+            Escribir ""
+            Escribir "Vehículo #", i, ":"
+            
+            Escribir "Ingrese la placa del vehículo:"
+            Leer placa
+            
+            Escribir "Ingrese la hora de ingreso (HH:MM):"
+            Leer horaIngreso
+            
+            resumenVehiculos <- resumenVehiculos + "Vehículo " + ConvertirATexto(i) + ":" + "\n"
+            resumenVehiculos <- resumenVehiculos + "  Placa: " + placa + "\n"
+            resumenVehiculos <- resumenVehiculos + "  Hora de ingreso: " + horaIngreso + "\n"
+            resumenVehiculos <- resumenVehiculos + "  Estado: ACTIVO" + "\n"
+            resumenVehiculos <- resumenVehiculos + "\n"
+            
+            Escribir "Vehículo registrado exitosamente."
+        FinPara
+        
+        Escribir ""
+        Escribir "=== RESUMEN DE VEHÍCULOS REGISTRADOS ==="
+        Escribir ""
+        Escribir "Total de vehículos en el parqueadero: ", numeroVehiculos
+        Escribir ""
+        Escribir resumenVehiculos
+        
+        Escribir "=== ESTADÍSTICAS ==="
+        Escribir "Espacios ocupados: ", numeroVehiculos
+        Escribir "Espacios disponibles: ", 100 - numeroVehiculos, " (asumiendo capacidad de 100)"
+        
+        Si numeroVehiculos >= 80 Entonces
+            Escribir "🚨 ALERTA: Parqueadero casi lleno"
+        SiNo
+            Si numeroVehiculos >= 50 Entonces
+                Escribir "⚠ AVISO: Parqueadero medio lleno"
+            SiNo
+                Escribir "✅ Parqueadero con buena disponibilidad"
+            FinSi
+        FinSi
+        
+    SiNo
+        Escribir "No se registraron vehículos."
+    FinSi
+    
+FinAlgoritmo
