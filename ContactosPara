@@ -1,0 +1,59 @@
+Algoritmo AgendaContactos
+    Definir numeroContactos Como Entero
+    Definir nombre, telefono, listaContactos Como Caracter
+    Definir i Como Entero
+    
+    listaContactos <- ""
+    
+    Escribir "=== AGENDA DE CONTACTOS ==="
+    Escribir ""
+    
+    Escribir "¿Cuántos contactos desea agregar a su agenda?"
+    Leer numeroContactos
+    
+    Si numeroContactos > 0 Entonces
+        Escribir ""
+        Escribir "--- REGISTRO DE CONTACTOS ---"
+        
+        Para i <- 1 Hasta numeroContactos Con Paso 1 Hacer
+            Escribir ""
+            Escribir "Contacto #", i, ":"
+            
+            Escribir "Ingrese el nombre del contacto:"
+            Leer nombre
+            
+            Escribir "Ingrese el número de teléfono:"
+            Leer telefono
+            
+            listaContactos <- listaContactos + ConvertirATexto(i) + ". " + nombre + "\n"
+            listaContactos <- listaContactos + "   Teléfono: " + telefono + "\n"
+            listaContactos <- listaContactos + "   Fecha de registro: " + Fecha() + "\n"
+            listaContactos <- listaContactos + "\n"
+            
+            Escribir "✓ Contacto agregado exitosamente"
+        FinPara
+        
+        Escribir ""
+        Escribir "=== LISTA DE CONTACTOS REGISTRADOS ==="
+        Escribir ""
+        Escribir "Total de contactos en la agenda: ", numeroContactos
+        Escribir ""
+        Escribir listaContactos
+        
+        Escribir "=== OPCIONES DISPONIBLES ==="
+        Escribir "• Buscar contacto por nombre"
+        Escribir "• Editar información de contacto"
+        Escribir "• Eliminar contacto"
+        Escribir "• Realizar llamada"
+        Escribir "• Enviar mensaje"
+        
+        Si numeroContactos >= 10 Entonces
+            Escribir ""
+            Escribir "💡 Sugerencia: Con muchos contactos, considera organizarlos por categorías"
+        FinSi
+        
+    SiNo
+        Escribir "No se agregaron contactos a la agenda."
+    FinSi
+    
+FinAlgoritmo
