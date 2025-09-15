@@ -1,0 +1,75 @@
+Algoritmo SumaListaNumeros
+    Definir cantidadNumeros Como Entero
+    Definir numero, sumaTotal Como Real
+    Definir i Como Entero
+    Definir listaNumeros Como Caracter
+    Definir promedio Como Real
+    
+    sumaTotal <- 0
+    listaNumeros <- ""
+    
+    Escribir "=== CALCULADORA DE SUMA DE NÚMEROS ==="
+    Escribir ""
+    
+    Escribir "¿Cuántos números desea ingresar?"
+    Leer cantidadNumeros
+    
+    Si cantidadNumeros > 0 Entonces
+        Escribir ""
+        Escribir "--- INGRESO DE NÚMEROS ---"
+        
+        Para i <- 1 Hasta cantidadNumeros Con Paso 1 Hacer
+            Escribir "Ingrese el número #", i, ":"
+            Leer numero
+            
+            // Validar que sea un número válido
+            sumaTotal <- sumaTotal + numero
+            
+            // Construir lista para mostrar
+            Si i = 1 Entonces
+                listaNumeros <- ConvertirATexto(numero)
+            SiNo
+                listaNumeros <- listaNumeros + " + " + ConvertirATexto(numero)
+            FinSi
+            
+            Escribir "✓ Número registrado. Suma parcial: ", sumaTotal
+        FinPara
+        
+        promedio <- sumaTotal / cantidadNumeros
+        
+        Escribir ""
+        Escribir "=== RESULTADOS ==="
+        Escribir ""
+        Escribir "Números ingresados: ", listaNumeros
+        Escribir "Cantidad de números: ", cantidadNumeros
+        Escribir "Suma total: ", sumaTotal
+        Escribir "Promedio: ", promedio
+        
+        Escribir ""
+        Escribir "=== ANÁLISIS ESTADÍSTICO ==="
+        
+        Si sumaTotal > 0 Entonces
+            Escribir "La suma es POSITIVA"
+        SiNo
+            Si sumaTotal < 0 Entonces
+                Escribir "La suma es NEGATIVA"
+            SiNo
+                Escribir "La suma es CERO"
+            FinSi
+        FinSi
+        
+        Si promedio > 50 Entonces
+            Escribir "El promedio es ALTO (mayor a 50)"
+        SiNo
+            Si promedio > 0 Entonces
+                Escribir "El promedio es MODERADO"
+            SiNo
+                Escribir "El promedio es BAJO o NEGATIVO"
+            FinSi
+        FinSi
+        
+    SiNo
+        Escribir "No se ingresaron números para sumar."
+    FinSi
+    
+FinAlgoritmo
