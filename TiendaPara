@@ -1,0 +1,92 @@
+Algoritmo VentasTienda
+    Definir numeroVentas Como Entero
+    Definir nombreProducto, resumenVentas Como Caracter
+    Definir precioProducto, totalVentas Como Real
+    Definir cantidadVendida Como Entero
+    Definir subtotal Como Real
+    Definir i Como Entero
+    
+    totalVentas <- 0
+    resumenVentas <- ""
+    
+    Escribir "=== SISTEMA DE VENTAS DE TIENDA ==="
+    Escribir ""
+    
+    Escribir "¿Cuántas ventas desea registrar?"
+    Leer numeroVentas
+    
+    Si numeroVentas > 0 Entonces
+        Escribir ""
+        Escribir "--- REGISTRO DE VENTAS ---"
+        
+        Para i <- 1 Hasta numeroVentas Con Paso 1 Hacer
+            Escribir ""
+            Escribir "Venta #", i, ":"
+            
+            Escribir "Ingrese el nombre del producto:"
+            Leer nombreProducto
+            
+            Escribir "Ingrese el precio unitario del producto ($):"
+            Leer precioProducto
+            
+            Escribir "Ingrese la cantidad vendida:"
+            Leer cantidadVendida
+            
+            Si precioProducto > 0 Y cantidadVendida > 0 Entonces
+                subtotal <- precioProducto * cantidadVendida
+                totalVentas <- totalVentas + subtotal
+                
+                resumenVentas <- resumenVentas + "Venta " + ConvertirATexto(i) + ":" + "\n"
+                resumenVentas <- resumenVentas + "  Producto: " + nombreProducto + "\n"
+                resumenVentas <- resumenVentas + "  Precio unitario: $" + ConvertirATexto(precioProducto) + "\n"
+                resumenVentas <- resumenVentas + "  Cantidad: " + ConvertirATexto(cantidadVendida) + " unidades" + "\n"
+                resumenVentas <- resumenVentas + "  Subtotal: $" + ConvertirATexto(subtotal) + "\n"
+                resumenVentas <- resumenVentas + "\n"
+                
+                Escribir "✓ Venta registrada exitosamente"
+                Escribir "Subtotal: $", subtotal
+                Escribir "Total acumulado: $", totalVentas
+            SiNo
+                Escribir "❌ Error: El precio y la cantidad deben ser valores positivos"
+                i <- i - 1  // Repetir esta venta
+            FinSi
+        FinPara
+        
+        Escribir ""
+        Escribir "=== RESUMEN FINAL DE VENTAS ==="
+        Escribir ""
+        Escribir "TOTAL DE VENTAS REGISTRADAS: ", numeroVentas
+        Escribir "MONTO TOTAL DE VENTAS: $", totalVentas
+        Escribir ""
+        
+        Escribir "=== DETALLE DE PRODUCTOS VENDIDOS ==="
+        Escribir resumenVentas
+        
+        Escribir "=== ANÁLISIS DE VENTAS ==="
+        Definir promedioVenta Como Real
+        promedioVenta <- totalVentas / numeroVentas
+        
+        Escribir "Promedio por venta: $", promedioVenta
+        
+        Si totalVentas > 2000 Entonces
+            Escribir "🎉 ¡EXCELENTE DÍA DE VENTAS! Superaste los $2000"
+        SiNo
+            Si totalVentas > 1000 Entonces
+                Escribir "👍 ¡MUY BUEN DÍA! Ventas superiores a $1000"
+            SiNo
+                Si totalVentas > 500 Entonces
+                    Escribir "✅ Buen día de ventas, superaste los $500"
+                SiNo
+                    Escribir "💪 Sigue trabajando para mejorar las ventas"
+                FinSi
+            FinSi
+        FinSi
+        
+        Escribir ""
+        Escribir "¡Gracias por usar el sistema de ventas!"
+        
+    SiNo
+        Escribir "No se registraron ventas."
+    FinSi
+    
+FinAlgoritmo
