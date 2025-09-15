@@ -1,0 +1,72 @@
+Algoritmo TiendaVirtual
+    Definir numeroProductos Como Entero
+    Definir nombreProducto, carritoCompras Como Caracter
+    Definir precioProducto, totalCompra Como Real
+    Definir i Como Entero
+    
+    totalCompra <- 0
+    carritoCompras <- ""
+    
+    Escribir "=== TIENDA VIRTUAL - CARRITO DE COMPRAS ==="
+    Escribir ""
+    
+    Escribir "¿Cuántos productos desea agregar a su carrito?"
+    Leer numeroProductos
+    
+    Si numeroProductos > 0 Entonces
+        Escribir ""
+        Escribir "--- AGREGANDO PRODUCTOS AL CARRITO ---"
+        
+        Para i <- 1 Hasta numeroProductos Con Paso 1 Hacer
+            Escribir ""
+            Escribir "Producto #", i, ":"
+            
+            Escribir "Ingrese el nombre del producto:"
+            Leer nombreProducto
+            
+            Escribir "Ingrese el precio del producto ($):"
+            Leer precioProducto
+            
+            Si precioProducto > 0 Entonces
+                totalCompra <- totalCompra + precioProducto
+                
+                carritoCompras <- carritoCompras + ConvertirATexto(i) + ". " + nombreProducto + "\n"
+                carritoCompras <- carritoCompras + "   Precio: $" + ConvertirATexto(precioProducto) + "\n"
+                carritoCompras <- carritoCompras + "\n"
+                
+                Escribir "✓ Producto agregado al carrito"
+                Escribir "Subtotal actual: $", totalCompra
+            SiNo
+                Escribir "❌ Error: El precio debe ser mayor que cero"
+                i <- i - 1  // Repetir este producto
+            FinSi
+        FinPara
+        
+        Escribir ""
+        Escribir "=== RESUMEN DE SU COMPRA ==="
+        Escribir ""
+        Escribir "PRODUCTOS EN SU CARRITO:"
+        Escribir carritoCompras
+        
+        Escribir "--- DETALLES DE LA COMPRA ---"
+        Escribir "Cantidad de productos: ", numeroProductos
+        Escribir "Total de la compra: $", totalCompra
+        
+        // Aplicar descuento si la compra es mayor a $100
+        Si totalCompra > 100 Entonces
+            Definir descuento Como Real
+            descuento <- totalCompra * 0.10
+            Escribir "🎉 ¡Descuento del 10% aplicado! (-$", descuento, ")"
+            Escribir "Total final: $", totalCompra - descuento
+        SiNo
+            Escribir "Total final: $", totalCompra
+        FinSi
+        
+        Escribir ""
+        Escribir "¡Gracias por su compra en nuestra tienda virtual!"
+        
+    SiNo
+        Escribir "No se agregaron productos al carrito."
+    FinSi
+    
+FinAlgoritmo
